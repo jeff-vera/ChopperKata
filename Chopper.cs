@@ -28,7 +28,29 @@ namespace KarateChopKataOne
 			}
 			else
 			{
-				throw new NotImplementedException();
+				List<int> topHalf = null;
+				List<int> bottomHalf = null;
+				SplitListInHalf(
+					listToSearch,
+					out topHalf,
+					out bottomHalf);
+				if (numberToFind < bottomHalf[0])
+				{
+					return FindIndexOfTarget(numberToFind, topHalf);
+				}
+				else
+				{
+					int returnedIndex = 
+						FindIndexOfTarget(numberToFind, bottomHalf);
+					if (returnedIndex == -1)
+					{
+						return -1;
+					}
+					else
+					{
+						return topHalf.Count + returnedIndex;
+					}						
+				}
 			}
 		}
 

@@ -56,6 +56,45 @@ namespace KarateChopKataOne
 		}
 
 		[Test]
+		public void ListOfThreeItemsContainsInputInTopHalfReturnsCorrectIndexTest()
+		{
+			List<int> threeItemList = new List<int> { 3, 5, 9 };
+			int numberToFind = 3;
+			Chopper c = new Chopper();
+
+			int returnedIndex =
+				c.FindIndexOfTarget(numberToFind, threeItemList);
+
+			Assert.That(returnedIndex, Is.EqualTo(0));
+		}
+
+		[Test]
+		public void ListOfThreeItemsContainsInputInBottomHalfReturnsCorrectIndexTest()
+		{
+			List<int> threeItemList = new List<int> { 3, 5, 9 };
+			int numberToFind = 9;
+			Chopper c = new Chopper();
+
+			int returnedIndex = 
+				c.FindIndexOfTarget(numberToFind, threeItemList);
+
+			Assert.That(returnedIndex, Is.EqualTo(2));
+		}
+
+		[Test]
+		public void ListOfThreeItemsDoesNotContainInputReturnsNegOneTest()
+		{
+			List<int> threeItemList = new List<int> { 3, 5, 9 };
+			int numberToFind = 10;
+			Chopper c = new Chopper();
+
+			int returnedIndex = 
+				c.FindIndexOfTarget(numberToFind, threeItemList);
+
+			Assert.That(returnedIndex, Is.EqualTo(-1));
+		}
+
+		[Test]
 		public void CanSplitEvenNumberedListInHalfTest()
 		{
 			List<int> evenNumberedList = new List<int> { 2, 4, 6, 8 };
